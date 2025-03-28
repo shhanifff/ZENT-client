@@ -12,7 +12,7 @@ function Wishlist() {
   // Fetch wishlist items
   const getCart = () => {
     axios
-      .get(`http://localhost:3000/api/getWishlist/${userId}`)
+      .get(`https://zent-server.onrender.com/api/getWishlist/${userId}`)
       .then((response) => setWishlist(response.data.data.products))
       .catch((error) => console.error("Error fetching wishlist:", error));
   };

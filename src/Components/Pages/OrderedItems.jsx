@@ -9,7 +9,7 @@ function OrderedItem() {
   useEffect(() => {
     console.log(userId);
     axios
-      .get(`http://localhost:3000/api/getOrder/${userId}`)
+      .get(`https://zent-server.onrender.com/api/getOrder/${userId}`)
       .then((res) => setOrderItem(res.data.data));
   }, [userId]);
 

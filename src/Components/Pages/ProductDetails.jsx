@@ -24,7 +24,7 @@ function ProductDetails() {
   // Fetch current user status (unchanged logic)
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/api/UserById/${userId}`)
+      .get(`https://zent-server.onrender.com/api/UserById/${userId}`)
       .then((response) => {
         setCurrentUser(response.data.data);
         console.log("Fetched Specific User:", response.data.data);

@@ -17,7 +17,7 @@ function ProductContext({ children }) {
   const fetchCartCount = async (userId) => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/userCart/${userId}`
+        `https://zent-server.onrender.com/api/userCart/${userId}`
       );
       const cartProducts = response.data?.data[0]?.products || [];
       setCartCount(cartProducts.length); // Update cart count
@@ -46,7 +46,7 @@ function ProductContext({ children }) {
     try {
       // Fetch user's cart
       const cartResponse = await axios.get(
-        `http://localhost:3000/api/userCart/${userId}`
+        `https://zent-server.onrender.com/api/userCart/${userId}`
       );
       const cartProducts = cartResponse.data?.data[0]?.products || [];
 
@@ -59,7 +59,7 @@ function ProductContext({ children }) {
         toast.error("already in Cart");
       } else {
         // Add product to cart
-        await axios.post(`http://localhost:3000/api/addCart/${userId}`, {
+        await axios.post(`https://zent-server.onrender.com/api/addCart/${userId}`, {
           productId: id,
         });
         toast.success("added to Cart");
@@ -74,7 +74,7 @@ function ProductContext({ children }) {
 
   async function handleAllProducts() {
     try {
-      const response = await axios.get("http://localhost:3000/api/allproducts");
+      const response = await axios.get("https://zent-server.onrender.com/api/allproducts");
       setAllProducts(response.data.data); // Products state update cheyyuka
     } catch (error) {
       console.error("Error fetching products:", error);
@@ -90,7 +90,7 @@ function ProductContext({ children }) {
   async function user() {
     try {
       setLoading(true);
-      const response = await axios.get("http://localhost:3000/api/allUsers");
+      const response = await axios.get("https://zent-server.onrender.com/api/allUsers");
       setAllUsers(response.data.data);
       setLoading(false); // Stop loading
     } catch (error) {
@@ -121,7 +121,7 @@ function ProductContext({ children }) {
 
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/getWishlist/${userId}`
+        `https://zent-server.onrender.com/api/getWishlist/${userId}`
       );
       const currentProduct = response.data.data.products.find(
         (item) => item.productId._id === id
@@ -132,7 +132,7 @@ function ProductContext({ children }) {
         return;
       }
 
-      await axios.post(`http://localhost:3000/api/addToWhislist/${userId}`, {
+      await axios.post(`https://zent-server.onrender.com/api/addToWhislist/${userId}`, {
         productId: id,
       });
       toast.success("added to wishlist");
@@ -147,7 +147,7 @@ function ProductContext({ children }) {
     try {
       const action = stock ? "outStock" : "inStock";
 
-      await axios.patch("http://localhost:3000/api/handleStock", {
+      await axios.patch("https://zent-server.onrender.com/api/handleStock", {
         productId: id,
         action,
       });
@@ -170,7 +170,7 @@ function ProductContext({ children }) {
   // Delete product
   async function productDelet(id) {
     try {
-      await axios.post(`http://localhost:3000/api/deleteproduct`, {
+      await axios.post(`https://zent-server.onrender.com/api/deleteproduct`, {
         productId: id,
       });
       handleAllProducts();
@@ -182,7 +182,7 @@ function ProductContext({ children }) {
   // Delete user
   async function userDelete(id) {
     try {
-      await axios.post(`http://localhost:3000/api/removeUser`, { userId: id });
+      await axios.post(`https://zent-server.onrender.com/api/removeUser`, { userId: id });
       user();
     } catch (error) {
       console.error("Error deleting user:", error);
@@ -192,7 +192,7 @@ function ProductContext({ children }) {
   // Block & Unblock user
   async function blockAndUnblock(id) {
     try {
-      await axios.patch(`http://localhost:3000/api/blockAndUnblock/${id}`);
+      await axios.patch(`https://zent-server.onrender.com/api/blockAndUnblock/${id}`);
       user(); // Fetch updated users
     } catch (error) {
       console.error("Error blocking/unblocking user:", error);

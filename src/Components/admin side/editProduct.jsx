@@ -45,7 +45,7 @@ function EditProduct() {
 
     // Perform the API call and handle with toast
     axios
-      .patch(`http://localhost:3000/api/editproduct/${id}`, {
+      .patch(`https://zent-server.onrender.com/api/editproduct/${id}`, {
         name: newName || editItem.name,
         category: newCategory || editItem.category,
         images: newImage || editItem.images,

@@ -33,7 +33,7 @@ function Addproduct() {
 
     console.log(obj);
 
-    axios.post(`http://localhost:3000/api/addproduct`, {
+    axios.post(`https://zent-server.onrender.com/api/addproduct`, {
       name: itemName,
       category: itemCategory,
       images: [itemURL],

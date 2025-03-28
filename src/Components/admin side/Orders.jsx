@@ -8,7 +8,7 @@ function Orders() {
   // Fetch orders from API
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/totalOrders")
+      .get("https://zent-server.onrender.com/api/totalOrders")
       .then((res) => setOrders(res.data.data))
       .catch((err) => console.error("Error fetching orders:", err));
   }, []);

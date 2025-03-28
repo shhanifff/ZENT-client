@@ -21,7 +21,7 @@ function AddToCart() {
     setIsLoading(true); // Show LoadingPage only during initial cart fetch
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/getCart/${userId}`
+        `https://zent-server.onrender.com/api/getCart/${userId}`
       );
       const { data } = response;
       if (data?.data?.products) {
@@ -42,12 +42,12 @@ function AddToCart() {
     console.log(`${action} product id :${id}`);
     try {
       if (action === "increment") {
-        await axios.patch(`http://localhost:3000/api/increment/${userId}`, {
+        await axios.patch(`https://zent-server.onrender.com/api/increment/${userId}`, {
           productId: id,
         });
         console.log("quantity increment");
       } else if (action === "decrement") {
-        await axios.patch(`http://localhost:3000/api/decrement/${userId}`, {
+        await axios.patch(`https://zent-server.onrender.com/api/decrement/${userId}`, {
           productId: id,
         });
         console.log("quantity decrement");
@@ -63,7 +63,7 @@ function AddToCart() {
     console.log(`remove product id :${id}`);
     try {
       await axios.delete(
-        `http://localhost:3000/api/removeCart/${userId}/${id}`
+        `https://zent-server.onrender.com/api/removeCart/${userId}/${id}`
       );
       await handleGetCart(); // Calls handleGetCart, which manages LoadingPage
     } catch (error) {

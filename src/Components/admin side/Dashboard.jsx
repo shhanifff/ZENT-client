@@ -33,7 +33,7 @@ function Dashboard() {
   const totalUsers = allUsers.length;
 
   useEffect(() => {
-    axios.get("http://localhost:3000/api/totalOrders").then((res) => {
+    axios.get("https://zent-server.onrender.com/api/totalOrders").then((res) => {
       setOrdersData(res.data.data);
 
       const total = res.data.data.reduce(

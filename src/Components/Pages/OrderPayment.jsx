@@ -41,7 +41,7 @@ function OrderPayment() {
   const handleCheckOut = async (response) => {
     try {
       const paymentVerification = await axios.post(
-        `http://localhost:3000/api/paymentVerification/${userId}`,
+        `https://zent-server.onrender.com/api/paymentVerification/${userId}`,
         {
           address: add,
           pincode: pin,
@@ -89,7 +89,7 @@ function OrderPayment() {
 
     try {
       const res = await axios.post(
-        `http://localhost:3000/api/payment/${userId}`,
+        `https://zent-server.onrender.com/api/payment/${userId}`,
         {
           address: add,
           pincode: pin,
