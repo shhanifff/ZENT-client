@@ -22,7 +22,7 @@ function SignIn() {
         "https://zent-server.onrender.com/api/login",
         {
           email: mail,
-          password: password,
+          password
         }
       );
       console.log("response token", res.data.token);
