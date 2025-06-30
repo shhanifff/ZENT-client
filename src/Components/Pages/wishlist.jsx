@@ -40,7 +40,7 @@ function Wishlist() {
 
   const removeFromWishlist = (id) => {
     axios
-      .patch(`http://localhost:3000/api/removeWishlist/${userId}`, {
+      .patch(`https://zent-server.onrender.com/api/removeWishlist/${userId}`, {
         productId: id,
       })
       .then(() => {
