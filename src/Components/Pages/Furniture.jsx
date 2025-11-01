@@ -23,7 +23,7 @@ function Furniture() {
         <div className="w-full  h-12 pt-4">
           <ul className="flex justify-center items-center justify-evenly flex-wrap">
             <li>
-              <div onClick={() => navigate("products")}>
+              <div onClick={() => navigate("products")} className="cursor-pointer">
                 <img
                   src="https://ii1.pepperfry.com/media/wysiwyg/banners/Frame_360_14062024_1.jpg"
                   alt=""
@@ -32,7 +32,7 @@ function Furniture() {
               </div>
             </li>
             <li>
-              <div onClick={() => navigate("products")}>
+              <div onClick={() => navigate("products")} className="cursor-pointer">
                 <img
                   src="https://ii1.pepperfry.com/media/wysiwyg/banners/Frame_360_14062024_2.jpg"
                   alt=""
@@ -41,7 +41,7 @@ function Furniture() {
               </div>
             </li>
             <li>
-              <div onClick={() => navigate("products")}>
+              <div onClick={() => navigate("products")} className="cursor-pointer">
                 <img
                   src="https://ii1.pepperfry.com/media/wysiwyg/banners/Frame_360_14062024_3.jpg"
                   alt=""
@@ -50,13 +50,13 @@ function Furniture() {
               </div>
             </li>
             <li>
-              <div onClick={() => navigate("products")}>
+              <div onClick={() => navigate("products")} className="cursor-pointer">
                 <img src="https://ii1.pepperfry.com/media/wysiwyg/banners/Frame_360_12072024_7.jpg" />
                 <h1 className="text-center text-xl">Home Kitchen</h1>
               </div>
             </li>
             <li>
-              <div onClick={() => navigate("products")}>
+              <div onClick={() => navigate("products")} className="cursor-pointer">
                 <img
                   src="https://ii1.pepperfry.com/media/wysiwyg/banners/Frame_360_14062024_9.jpg"
                   alt=""
@@ -90,7 +90,7 @@ function Furniture() {
           </h1>
           <ul className="flex justify-center items-center justify-evenly flex-wrap ">
             <li>
-              <div className="py-3">
+              <div className="py-3 cursor-pointer" onClick={() => navigate("products")} >
                 <img
                   src="https://ii1.pepperfry.com/assets/13031544-34e7-48e0-a951-b9fbb2f9f4ff.jpg"
                   alt=""
@@ -99,7 +99,7 @@ function Furniture() {
               </div>
             </li>
             <li>
-              <div className="py-3">
+              <div className="py-3 cursor-pointer" onClick={() => navigate("products")} >
                 <img
                   src="https://ii1.pepperfry.com/assets/29689779-0d5c-43b2-8565-47485f18219a.jpg"
                   alt=""
@@ -108,7 +108,7 @@ function Furniture() {
               </div>
             </li>
             <li>
-              <div className="py-3">
+              <div className="py-3 cursor-pointer" onClick={() => navigate("products")} >
                 <img
                   src="https://ii1.pepperfry.com/assets/2fcc79d3-d10f-4ae9-bedc-78d6de43d93d.jpg"
                   alt=""

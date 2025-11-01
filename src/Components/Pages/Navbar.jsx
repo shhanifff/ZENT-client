@@ -44,19 +44,19 @@ function Navbar() {
             Home
           </li>
           <li
-            className="p-3 hover:text-gray-600 hover:underline hover:underline-offset-4 rounded-md transition-all"
+            className="p-3 hover:text-gray-600 hover:underline hover:underline-offset-4 rounded-md transition-all cursor-pointer"
             onClick={() => navigate("/shopping")}
           >
             Furniture
           </li>
           <li
-            className="p-3 hover:text-gray-600 hover:underline hover:underline-offset-4 rounded-md transition-all"
+            className="p-3 hover:text-gray-600 hover:underline hover:underline-offset-4 rounded-md transition-all cursor-pointer"
             onClick={() => navigate("/about")}
           >
             About
           </li>
           <li
-            className="p-3 hover:text-gray-600 hover:underline hover:underline-offset-4 rounded-md transition-all"
+            className="p-3 hover:text-gray-600 hover:underline hover:underline-offset-4 rounded-md transition-all cursor-pointer"
             onClick={() => navigate("/contact")}
           >
             Contact
@@ -168,9 +168,9 @@ function Navbar() {
           >
             Cart
           </li>
-          <div className="flex justify-center items-center w-full h-24 justify-evenly">
-            {localStorage.getItem("mail") === null ||
-            localStorage.getItem("mail") === "" ? (
+          <div className="flex justify-center items-center w-full h-24 z-40">
+            {localStorage.getItem("token") === null ||
+          localStorage.getItem("token") === "" ?(
               <button
                 className="list-none w-full text-center p-4 hover:bg-gray-100 hover:text-gray-600 transition-all cursor-pointer"
                 onClick={() => {
@@ -197,7 +197,7 @@ function Navbar() {
           profile
             ? "opacity-100 translate-x-0 visible"
             : "opacity-0 translate-x-10 invisible"
-        } fixed top-10 right-5 sm:top-20 sm:right-5 w-full sm:w-80 md:w-96 lg:w-96 xl:w-96 h-auto transform rounded-lg p-6 flex flex-col justify-center items-start space-y-6 sm:space-y-4 bg-white shadow-lg border border-gray-200 transition-all duration-500`}
+        } fixed top-10 right-5 sm:top-20 sm:right-5 w-full sm:w-80 md:w-96 lg:w-96 xl:w-96 h-auto transform rounded-lg p-6 flex flex-col justify-center items-start space-y-6 sm:space-y-4 bg-white shadow-lg border border-gray-200 transition-all duration-500  mt-5 ml-2 z-50`}
       >
         {localStorage.getItem("token") === null ||
         localStorage.getItem("token") === "" ? (

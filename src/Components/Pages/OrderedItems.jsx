@@ -1,72 +1,81 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Footer from "./Footer";
 
 function OrderedItem() {
   const [orderItem, setOrderItem] = useState([]);
 
-  let userId = localStorage.getItem("userId");
+  const userId = localStorage.getItem("userId");
 
   useEffect(() => {
-    console.log(userId);
+    if (!userId) return;
     axios
       .get(`https://zent-server.onrender.com/api/getOrder/${userId}`)
-      .then((res) => setOrderItem(res.data.data));
+      .then((res) => setOrderItem(res.data.data))
+      .catch((err) => console.error("Error fetching orders:", err));
   }, [userId]);
-
-  useEffect(() => {
-    console.log("OrderedItem", orderItem);
-  }, [orderItem]);
 
   // Function to format the date
   const formatDate = (timestamp) => {
-    return new Date(timestamp).toLocaleString(); // Converts to readable date-time
+    return new Date(timestamp).toLocaleDateString("en-IN", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-8 bg-white shadow-md rounded-xl border border-gray-100">
-      {/* Ordered Items Section */}
-      <div className="space-y-6">
-        <h1 className="text-2xl font-bold text-gray-900 underline underline-offset-4 decoration-gray-300">
-          Your Orders
-        </h1>
-        {orderItem.map((order) => (
-          <div
-            key={order._id}
-            className="bg-white p-4 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300"
-          >
-            <div className="space-y-3">
-              <p className="text-sm text-gray-500">
-                <span className="font-medium text-gray-700">Order Date:</span>{" "}
-                {formatDate(order.orderDate)}
-              </p>
-              <p className="text-sm text-gray-500">
-                <span className="font-medium text-gray-700">Total Amount:</span>{" "}
-                <span className="text-gray-900 font-semibold">
-                  ₹{order.Total_Amount}
-                </span>
-              </p>
-              {order.products.map((item) => (
-                <div
-                  key={item._id}
-                  className="flex flex-wrap justify-between items-center py-3 border-t border-gray-100"
-                >
-                  <div className="flex items-center space-x-4">
-                    <img
-                      src={item.image}
-                      alt="Order Item"
-                      className="w-20 h-20 object-cover rounded-md shadow-sm"
-                    />
-                    <span className="text-lg text-gray-700 font-medium">
-                      {item.productName}
-                    </span>
-                  </div>
-                </div>
-              ))}
+        <>
+
+    <div className="max-w-full w-full p-6 sm:p-10 bg-white  rounded-2xl  mt-10">
+      <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 text-center">
+        Your Orders
+      </h1>
+
+      {orderItem.length === 0 ? (
+        <p className="text-center text-gray-600">No orders found.</p>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+          {orderItem.map((order) => (
+            <div
+              key={order._id}
+              className="bg-gray-50 border border-gray-100 rounded-xl p-4 hover:shadow-lg transition-all duration-300"
+            >
+              {/* Product Image */}
+              {order.products?.[0]?.image && (
+                <img
+                  src={order.products[0].image}
+                  alt="Ordered Product"
+                  className="w-full h-56 object-cover rounded-lg mb-4"
+                />
+              )}
+
+              {/* Order Info */}
+              <div className="space-y-2">
+                <p className="text-sm text-gray-600">
+                  <span className="font-semibold text-gray-800">Order Date:</span>{" "}
+                  {formatDate(order.orderDate)}
+                </p>
+
+                <p className="text-sm text-gray-600">
+                  <span className="font-semibold text-gray-800">Total Price:</span>{" "}
+                  <span className="text-gray-900 font-bold text-lg">
+                    ₹{order.Total_Amount}
+                  </span>
+                </p>
+
+                <p className="text-sm text-gray-600">
+                  <span className="font-semibold text-gray-800">Address:</span>{" "}
+                  {order.Address}
+                </p>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
+    <Footer/>
+    </>
   );
 }
 
